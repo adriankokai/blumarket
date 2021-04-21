@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django_dropbox_storage',
+    'django-dropbox-storage',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'store',
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
+DEFAULT_FILE_STORAGE = 'django-dropbox-storage.django_dropbox_storage.storage.DropboxStorage'
 DROPBOX_ACCESS_TOKEN = str(os.getenv('DBX'))
 DROPBOX_ROOT_PATH = '/Public'
 
@@ -159,5 +159,6 @@ CORS_ORIGIN_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://127.0.0.1:8000',
     'https://blumarketapp.herokuapp.com',
-    'http://blumarketapp.herokuapp.com'
+    'http://blumarketapp.herokuapp.com',
+    'https://blumarket-b48d1.web.app'
 ]

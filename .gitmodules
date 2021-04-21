@@ -1,0 +1,3 @@
+[submodule "django-dropbox-storage"]
+	path = django-dropbox-storage
+	url = https://github.com/zuck/django-dropbox-storage.git

@@ -15,12 +15,12 @@ class ProductImage(models.Model):
     photo = models.FileField(upload_to="static/product_images/")
 
     def __str__(self):
-        return self.product
+        return self.product.name
 
 class Order(models.Model):
-    product = models.ManyToManyField(Product)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     qty = models.CharField(max_length=255)
-    status = models.CharField(max_length=255)
+    status = models.CharField(max_length=255, default='warehouse')
     customer_address = models.TextField()
     customer_city = models.CharField(max_length=255)
     customer_postal_code = models.CharField(max_length=255)
@@ -30,7 +30,7 @@ class Order(models.Model):
     customer_email = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.id + ' ' + self.product + ' ' + self.customer_name
+        return str(self.id) + ' ' + str(self.product.name) + ' ' + str(self.customer_name)
 
 class Txn(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
