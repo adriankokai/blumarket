@@ -89,22 +89,6 @@ WSGI_APPLICATION = 'blumarket.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-heroku_db_uri = str(os.getenv('heroku_db_uri'))
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dbl27bcl4e7r9o',
-        'USER': 'moflenhfuxqpst',
-        'PASSWORD': 'fa1dd6a402e7a3fcedbcbaf58a948e88d477e35a056af218d11db9ae24971771',
-        'HOST': 'ec2-34-195-233-155.compute-1.amazonaws.com',
-        'PORT': '5432',
-    }
-}
-db_from_env = dj_database_url.config(heroku_db_uri, conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
