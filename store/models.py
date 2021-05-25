@@ -1,18 +1,26 @@
 from django.db import models
+import os
+import uuid
 
 # Create your models here.
+def content_file_name(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = filename + str(uuid.uuid4()) + ext
+    return os.path.join('static/product_images/', filename)
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.CharField(max_length=255)
     category = models.CharField(max_length=255)
     stock = models.CharField(max_length=255)
+    thumbnail = models.ImageField(upload_to=content_file_name)
 
     def __str__(self):
         return self.name
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, related_name="product_images", on_delete=models.CASCADE)
-    photo = models.FileField(upload_to="static/product_images/")
+    photo = models.FileField(upload_to=content_file_name)
 
     def __str__(self):
         return self.product.name

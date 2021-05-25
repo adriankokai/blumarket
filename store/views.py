@@ -28,7 +28,14 @@ def place_order(request):
         return Response('failed to place order')
 
 @api_view(['GET'])
-def product(request):
-    product = Product.objects.all()[0]
+def product(request, id):
+    product = Product.objects.get(id=id)
     serializer = ProductSerializer(product, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def products(request):
+    products = Product.objects.all()
+    serializer = ProductSerializer(products, many=True)
+    print('products', serializer.data)
     return Response(serializer.data)
