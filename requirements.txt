@@ -4,4 +4,6 @@ pillow
 gunicorn
 djangorestframework
 django-cors-headers
+dotenv
+dj_database_url
 
