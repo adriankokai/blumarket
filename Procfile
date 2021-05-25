@@ -1,0 +1,1 @@
+web: gunicorn blumarket.wsgi --log-file -
