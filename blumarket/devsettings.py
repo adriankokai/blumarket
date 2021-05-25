@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django_dropbox_storage',
+    'django-dropbox-storage',
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'store',
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'corsheaders',
 ]
 
-DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
+DEFAULT_FILE_STORAGE = 'django-dropbox-storage.django_dropbox_storage.storage.DropboxStorage'
 DROPBOX_ACCESS_TOKEN = str(os.getenv('DBX'))
 DROPBOX_ROOT_PATH = '/Public'
 
@@ -103,15 +103,6 @@ DATABASES = {
 }
 db_from_env = dj_database_url.config(heroku_db_uri, conn_max_age=600)
 DATABASES['default'].update(db_from_env)
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
